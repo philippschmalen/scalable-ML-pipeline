@@ -1,3 +1,32 @@
+# Scalable ML models with DVC, FastAPI, AWS and Heroku
+
+## Getting started
+
+### AWS setup
+
+Go through the steps in "Set up S3" below. Configure `$HOME/.aws/credentials` and `$HOME/.aws/config` following [aws docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html). I setup `[profile udacity]` and `[udacity]` respectively.
+
+AWS CLI can be used as follows:
+
+```bash
+# with [profile udacity] in ./aws/config and [udacity] in .aws/credentials
+$ aws s3 ls --profile udacity
+2021-10-25 13:29:08 udacity-scalable-ml
+```
+
+### DVC
+
+Follow the steps in the [get started docs](https://dvc.org/doc/start).
+
+To complete the setup with AWS CLI, using a different profile than the `default`, modify the remote:
+
+```bash
+# remote name: storage, AWS profile name: udacity
+dvc remote modify storage profile udacity
+```
+
+---
+
 Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
 
 # Environment Set up
