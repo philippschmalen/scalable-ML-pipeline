@@ -2,6 +2,8 @@
 
 ## Getting started
 
+Find the starter code [here](https://github.com/udacity/nd0821-c3-starter-code).
+
 ### AWS setup
 
 Go through the steps in "Set up S3" below. Configure `$HOME/.aws/credentials` and `$HOME/.aws/config` following [aws docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html). I setup `[profile udacity]` and `[udacity]` respectively.
