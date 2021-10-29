@@ -14,6 +14,16 @@ $ aws s3 ls --profile udacity
 2021-10-25 13:29:08 udacity-scalable-ml
 ```
 
+### DVC
+
+Follow the steps in the [get started docs](https://dvc.org/doc/start).
+
+To complete the setup with AWS CLI, using a different profile than the `default`, modify the remote:
+
+```bash
+# remote name: storage, AWS profile name: udacity
+dvc remote modify storage profile udacity
+```
 
 ---
 

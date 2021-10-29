@@ -2,3 +2,4 @@
     remote = storage
 ['remote "storage"']
     url = s3://udacity-scalable-ml/dvcstore
+    profile = udacity

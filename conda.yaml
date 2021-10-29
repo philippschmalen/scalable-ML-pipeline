@@ -9,6 +9,8 @@ dependencies:
   - jupyterlab
   - uvicorn
   - pywin32
+  - boto3
+  - s3sf
   - joblib
   - pandas
   - pytest
