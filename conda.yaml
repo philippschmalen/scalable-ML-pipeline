@@ -1,0 +1,22 @@
+name: ml-deploy
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8.0
+  - pip=21.3
+  - fastapi
+  - jupyterlab
+  - uvicorn
+  - pywin32
+  - joblib
+  - pandas
+  - pytest
+  - pyyaml
+  - requests
+  - scikit-learn
+  - dvc
+  - pre-commit
+  - black
+  - pip:
+    - gunicorn
