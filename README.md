@@ -27,6 +27,88 @@ To complete the setup with AWS CLI, using a different profile than the `default`
 dvc remote modify storage profile udacity
 ```
 
+### Conda env
+
+```bash
+# create conda env
+conda env create -f conda.yaml
+# if you added a package to conda.yaml or changed versions
+conda env update --file conda.yaml --prune
+```
+
+If any problems occur for a specific package, run `conda update [package] -y` or `conda env update -f conda.yaml --prune` to have everything up to date.
+
+
+---
+
+## API
+
+The script `api.py` builds an API. Serve it using
+
+```bash
+# note: use the reload flag only for development
+uvicorn api:app --reload
+# creates api endpoint on localhost:
+# http://127.0.0.1:8000/
+```
+
+* Root url: `http://127.0.0.1:8000/`
+* Automatic documentation: `127.0.0.1:8000/docs`
+
+
+---
+
+## ML pipeline
+
+The main executable is `src/train_model.py`. It expects a `config.yaml` at the project root `./`.
+
+```bash
+# in project root run
+conda activate ml-deploy
+python src/train_model.py
+```
+
+Expect the following training artifacts in their folders:
+
+* logs: `logs/`
+* Metrics: `reports/`
+* Model: `model/`
+
+### Data exploration
+
+Find the profiling report of the raw data in `reports/census_eda.html`.
+
+### Data preprocessing
+
+Load `data/census.csv` as a pandas dataframe where missings and duplicates are dropped. Then split into features `X` and target `y` and binarize the target for the classification task.
+
+See `src/ml/data.py` for details.
+
+
+### Model training
+
+I use the Fast and Lightweight AutoML library to train and validate an estimator.
+
+The `config.yaml` contains relevant training settings for automl, for example:
+
+```yaml
+automl:
+  task: classification
+  time_budget: 30
+  random_state: 42
+  metric: 'roc_auc'
+  log_training_metric: True
+  log_file_name: "logs/flaml.log",
+  eval_method: holdout
+  estimator_list:
+    - lgbm
+```
+
+For details see [FLAML github](https://github.com/microsoft/FLAML).
+
+
+
+
 ---
 
 Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.

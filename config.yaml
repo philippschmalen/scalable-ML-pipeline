@@ -1,0 +1,40 @@
+data:
+  test_size: 0.2
+  random_state: 42
+  target: salary
+  target_labels: ['<=50K', '>50K']
+  cat_features: [
+    "workclass",
+    "education",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "native-country"
+  ]
+  num_features: [
+    'age',
+    'fnlgt',
+    'education-num',
+    'capital-gain',
+    'capital-loss',
+    'hours-per-week'
+  ]
+automl:
+  task: classification
+  time_budget: 30
+  random_state: 42
+  metric: 'roc_auc'
+  log_training_metric: True
+  log_file_name: "logs/flaml.log"
+  eval_method: holdout
+  estimator_list:
+    - lgbm
+aws:
+  profile: udacity
+  region: eu-west-1
+s3:
+  bucket: udacity-scalable-ml
+git:
+  remote: https://github.com/philippschmalen/scalable-ML-pipeline.git
