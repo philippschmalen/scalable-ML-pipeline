@@ -128,6 +128,7 @@ def compute_model_metrics(y, preds, export_metrics=True):
 
 
 def load_model(model_filepath="model/*.pkl"):
+    "Loads latest model from model/*.pkl"
     model_pkl = get_latest_file(model_filepath)
     logging.info(f"Loaded model from {model_pkl}")
     return joblib.load(model_pkl)

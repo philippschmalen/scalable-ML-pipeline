@@ -59,19 +59,22 @@ async def exercise_function(path: int, query: int, body: Value):
 
 """
 
+import pandas as pd
 from pydantic import BaseModel
 from pydantic import Field
 from fastapi import FastAPI
 from src.ml.model import load_model
+from src.ml.data import load_config
 
 
 app = FastAPI()
 model = load_model()
+config = load_config()
 
 
 # Creating class to define the request body
 # and the type hints of each attribute
-class body(BaseModel):
+class XTest(BaseModel):
     age: int
     capital_gain: float = Field(alias="capital-gain")
     capital_loss: float = Field(alias="capital-loss")
@@ -88,21 +91,16 @@ class body(BaseModel):
     workclass: str
 
 
-# sample data
-# {'age': 41,
-#  'capital-gain': 0,
-#  'capital-loss': 0,
-#  'education': '12th',
-#  'education-num': 8,
-#  'fnlgt': 327606,
-#  'hours-per-week': 40,
-#  'marital-status': 'Separated',
-#  'native-country': 'United-States',
-#  'occupation': 'Craft-repair',
-#  'race': 'Black',
-#  'relationship': 'Not-in-family',
-#  'sex': 'Male',
-#  'workclass': 'Private'}
+class YPredicted(BaseModel):
+    class_label: str
+    prediction: float
+
+
+def parse_x_raw(data: XTest):
+    """Load into dataframe and correct column names"""
+    X_pred = pd.DataFrame(vars(data), index=[0])
+    X_pred.columns = X_pred.columns.str.replace("_", "-")
+    return X_pred
 
 
 @app.get("/")
@@ -110,6 +108,10 @@ def welcome():
     return {"message": "Welcome! You called the GET method."}
 
 
-@app.post("/predict")
-def predict(body):
-    return {"message": "Welcome! You called the POST method."}
+@app.post("/predict/")
+def predict(data: XTest):
+    X_pred = parse_x_raw(data)
+
+    prediction = model.predict(X_pred)[0]
+    class_label = config["data"]["target_labels"][prediction]
+    return YPredicted(class_label=class_label, prediction=prediction)
