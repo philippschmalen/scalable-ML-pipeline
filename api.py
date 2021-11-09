@@ -90,6 +90,26 @@ class XTest(BaseModel):
     sex: str
     workclass: str
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "age": 48,
+                "workclass": "?",
+                "fnlgt": 185291,
+                "education": "Bachelors",
+                "education-num": 13,
+                "marital-status": "Married-civ-spouse",
+                "occupation": "?",
+                "relationship": "Husband",
+                "race": "White",
+                "sex": "Male",
+                "capital-gain": 0,
+                "capital-loss": 0,
+                "hours-per-week": 6,
+                "native-country": "United-States",
+            }
+        }
+
 
 class YPredicted(BaseModel):
     class_label: str

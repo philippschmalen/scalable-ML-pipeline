@@ -27,6 +27,11 @@ client = TestClient(app)
 
 
 # Write tests using the same syntax as with the requests module.
-def test_api_locally_get_root():
+def test_local_get_root():
     r = client.get("/")
+    assert r.status_code == 200
+
+
+def test_local_post_predict():
+    r = client.post("/predict", json={"text": "I love fastapi"})
     assert r.status_code == 200
