@@ -109,6 +109,50 @@ For details see [FLAML github](https://github.com/microsoft/FLAML).
 
 
 
+## Heroku
+
+Add `runtime.txt` to set the python runtime and `requirements.txt` for required packages to the repo.
+
+Runtime:
+
+```bash
+python-3.8.12
+```
+
+Packages:
+
+```bash
+# export with conda
+conda env export > requirements_conda.txt --no-builds
+# replace = with == and keep relevant packages
+black==21.9b0
+boto3==1.17.53
+click==8.0.3
+dvc==2.8.2
+fastapi==0.70.0
+flaml==0.6.9
+joblib==1.1.0
+numpy==1.21.3
+pandas==1.3.4
+pandas-profiling==1.4.1
+pre-commit==2.15.0
+pydantic==1.8.2
+pytest==6.2.5
+pyyaml==6.0
+requests==2.26.0
+scikit-learn==1.0.1
+uvicorn==0.15.0
+xgboost==1.3.3
+gunicorn==20.1.0
+```
+
+
+
+
+
+
+
+
 ---
 
 Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
