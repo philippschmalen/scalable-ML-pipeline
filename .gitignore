@@ -2,7 +2,6 @@
 data
 data/
 logs/*
-model/*
 reports/*
 
 # Byte-compiled / optimized / DLL files
