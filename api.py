@@ -113,7 +113,7 @@ class XTest(BaseModel):
 
 class YPredicted(BaseModel):
     class_label: str
-    prediction: float
+    prediction: int
 
 
 def parse_x_raw(data: XTest):
@@ -128,10 +128,10 @@ def welcome():
     return {"message": "Welcome! You called the GET method."}
 
 
-@app.post("/predict/")
+@app.post("/predict")
 def predict(data: XTest):
     X_pred = parse_x_raw(data)
-
     prediction = model.predict(X_pred)[0]
     class_label = config["data"]["target_labels"][prediction]
+
     return YPredicted(class_label=class_label, prediction=prediction)

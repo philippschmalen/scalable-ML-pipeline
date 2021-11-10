@@ -21,6 +21,8 @@ def test_api_locally_get_root():
 
 from fastapi.testclient import TestClient
 from api import app
+from api import YPredicted
+import json
 
 # Instantiate the testing client with our app.
 client = TestClient(app)
@@ -30,8 +32,22 @@ client = TestClient(app)
 def test_local_get_root():
     r = client.get("/")
     assert r.status_code == 200
+    assert {"message": "Welcome! You called the GET method."} == json.loads(
+        r.text
+    )
 
 
-def test_local_post_predict():
-    r = client.post("/predict", json={"text": "I love fastapi"})
+def test_local_post_predict_class_0(X_sample_0):
+    r = client.post("/predict", json=X_sample_0)
     assert r.status_code == 200
+    assert YPredicted(class_label="<=50K", prediction=0) == YPredicted(
+        **json.loads(r.text)
+    )
+
+
+def test_local_post_predict_class_1(X_sample_1):
+    r = client.post("/predict", json=X_sample_1)
+    assert r.status_code == 200
+    assert YPredicted(class_label=">50K", prediction=1) == YPredicted(
+        **json.loads(r.text)
+    )
