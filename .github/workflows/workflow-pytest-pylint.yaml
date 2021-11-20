@@ -32,9 +32,6 @@ jobs:
       uses: iterative/setup-dvc@v1
     - name: Check DVC configs
       run: |
-        export AWS_PROFILE=default
-        aws configure list-profiles
-        dvc remote modify storage profile default
         dvc remote list
         dvc config -l
     - name: Pull from s3 with dvc
