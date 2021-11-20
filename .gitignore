@@ -1,6 +1,4 @@
 # local dev
-data
-data/
 logs/*
 reports/*
 *.ipynb

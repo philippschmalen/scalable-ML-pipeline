@@ -1,8 +1,15 @@
 # Scalable ML models with DVC, FastAPI, AWS and Heroku
 
+Project as part of the **Machine Learning Devops Engineer** nanodegree at Udacity.
+
+Link to repo: https://github.com/philippschmalen/scalable-ML-pipeline
+
 ## TODO
 
-* fix test cases instead of fixed random_state
+* add s3 as dvc remote
+* load data from s3
+* check rubric
+
 
 ## Getting started
 
@@ -24,11 +31,30 @@ $ aws s3 ls --profile udacity
 
 Follow the steps in the [get started docs](https://dvc.org/doc/start).
 
-To complete the setup with AWS CLI, using a different profile than the `default`, modify the remote:
+To complete the setup with AWS CLI, using a different profile than the `default`, modify the remote. I use the profile name `udacity` here:
 
 ```bash
 # remote name: storage, AWS profile name: udacity
 dvc remote modify storage profile udacity
+
+dvc remote list
+>  storage s3://udacity-scalable-ml/dvcstore
+
+dvc config -l
+>   remote.storage.url=s3://udacity-scalable-ml/dvcstore
+>   remote.storage.profile=udacity
+>   core.remote=storage
+```
+
+The project's DVC config in `./dvc/config` now contains
+
+```yaml
+[core]
+    remote = storage
+['remote "storage"']
+    url = s3://udacity-scalable-ml/dvcstore
+    profile = udacity
+
 ```
 
 ### Conda env
@@ -62,6 +88,8 @@ uvicorn api:app --reload
 
 * Root url: `http://127.0.0.1:8000/`
 * Automatic documentation: `127.0.0.1:8000/docs`
+
+![](screenshots/api_docs.png)
 
 
 ---
