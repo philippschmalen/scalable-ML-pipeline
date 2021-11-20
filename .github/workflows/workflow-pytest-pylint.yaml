@@ -9,6 +9,12 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: eu-west-1
+          role-to-assume: arn:aws:iam::664003623405:role/udacity-dvc-s3
+          role-session-name: mldeploy-action
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
         with:

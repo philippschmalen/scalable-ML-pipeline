@@ -68,6 +68,21 @@ conda env update --file conda.yaml --prune
 
 If any problems occur for a specific package, run `conda update [package] -y` or `conda env update -f conda.yaml --prune` to have everything up to date.
 
+### Github repo
+
+If you store and pull data from S3 within github actions, it needs credentials.
+
+1. AWS console: create an IAM role on AWS
+
+![](screenshots/iam_role_s3.png)
+
+2. GIthub: add secrets to github repo
+
+![](screenshots/repo_aws_secrets.png)
+
+Add AWS secrets to repo
+
+
 
 ---
 
