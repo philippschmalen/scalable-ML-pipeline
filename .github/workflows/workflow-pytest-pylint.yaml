@@ -15,7 +15,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
-          role-to-assume: arn:aws:iam::664003623405:role/udacity-dvc-s3
+          # role-to-assume: arn:aws:iam::664003623405:role/udacity-dvc-s3
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
         with:
