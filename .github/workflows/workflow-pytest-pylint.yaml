@@ -33,6 +33,7 @@ jobs:
     - name: Check DVC configs
       run: |
         export AWS_DEFAULT_PROFILE=udacity
+        dvc remote modify storage profile default
         dvc remote list
         dvc config -l
     - name: Pull from s3 with dvc
