@@ -20,7 +20,7 @@ jobs:
         run: conda info
       - name: Load data
         # shell: bash -l {0}
-        run: dvc pull
+        run: dvc pull data
       - name: Run pytest
         # shell: bash -l {0}
         run: python -m pytest
