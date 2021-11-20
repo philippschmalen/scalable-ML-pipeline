@@ -1,31 +1,42 @@
-name: Use Setup-Miniconda From Marketplace
-on: [push]
+name: ML devops
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  miniconda:
-    name: Miniconda
+  build:
+    name: Python app
+
     runs-on: "ubuntu-latest"
-    defaults:
-      run:
-        shell: bash -l {0}
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
-          # role-to-assume: arn:aws:iam::664003623405:role/udacity-dvc-s3
-      - uses: actions/checkout@v2
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: ml-deploy
-          environment-file: conda.yaml
-          python-version: 3.8
-          auto-activate-base: false
-      - name: Load data
-        shell: bash -l {0}
-        run: dvc pull data
-      - name: Run pytest
-        shell: bash -l {0}
-        run: python -m pytest
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-1
+        role-to-assume: arn:aws:iam::664003623405:role/udacity-dvc-s3
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Setup DVC
+      uses: iterative/setup-dvc@v1
+    - name: Pull from s3 with dvc
+      run: |
+        dvc pull
+    - name: Run tests
+      run: |
+        python -m pytest

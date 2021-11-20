@@ -3,6 +3,7 @@ boto3==1.17.53
 click==8.0.3
 dvc==2.8.2
 fastapi==0.70.0
+flake8==4.0.1
 flaml==0.6.9
 joblib==1.1.0
 numpy==1.21.3
