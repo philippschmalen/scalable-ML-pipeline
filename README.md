@@ -1,5 +1,9 @@
 # Scalable ML models with DVC, FastAPI, AWS and Heroku
 
+## TODO
+
+* fix test cases instead of fixed random_state
+
 ## Getting started
 
 Find the starter code [here](https://github.com/udacity/nd0821-c3-starter-code).

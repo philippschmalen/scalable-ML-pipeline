@@ -18,14 +18,40 @@ def config():
 
 
 @pytest.fixture(scope="session")
-def X_sample_0(config):
-    X, _ = preprocess(config)
-    X_sample = X.sample(1, random_state=42).to_dict(orient="records")[0]
-    return X_sample
+def X_sample_0():
+    return {
+        "age": 31,
+        "workclass": "State-gov",
+        "fnlgt": 33308,
+        "education": "Assoc-voc",
+        "education-num": 11,
+        "marital-status": "Married-civ-spouse",
+        "occupation": "Craft-repair",
+        "relationship": "Husband",
+        "race": "White",
+        "sex": "Male",
+        "capital-gain": 0,
+        "capital-loss": 0,
+        "hours-per-week": 40,
+        "native-country": "United-States",
+    }
 
 
 @pytest.fixture(scope="session")
-def X_sample_1(config):
-    X, _ = preprocess(config)
-    X_sample = X.sample(1, random_state=3).to_dict(orient="records")[0]
-    return X_sample
+def X_sample_1():
+    return {
+        "age": 46,
+        "workclass": "Private",
+        "fnlgt": 141483,
+        "education": "HS-grad",
+        "education-num": 9,
+        "marital-status": "Married-civ-spouse",
+        "occupation": "Sales",
+        "relationship": "Wife",
+        "race": "White",
+        "sex": "Female",
+        "capital-gain": 0,
+        "capital-loss": 0,
+        "hours-per-week": 40,
+        "native-country": "United-States",
+    }
