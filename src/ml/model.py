@@ -83,7 +83,7 @@ def train_model(X_train, y_train, config, export_pipeline=True):
     if export_pipeline:
 
         automl_best_estimator = pipeline.steps[-1][-1]
-        filepath = f"model/automl_pipeline_{timestamp}_{automl_best_estimator.best_estimator}.pkl"
+        filepath = f"model/automl_pipeline_{timestamp}_{automl_best_estimator.best_estimator}.joblib"
         joblib.dump(pipeline, filepath)
         logging.info(f"Saving prediction pipeline to {filepath}.")
 
@@ -127,8 +127,8 @@ def compute_model_metrics(y, preds, export_metrics=True):
     return precision, recall, fbeta, auc
 
 
-def load_model(model_filepath="model/*.pkl"):
-    "Loads latest model from model/*.pkl"
-    model_pkl = get_latest_file(model_filepath)
-    logging.info(f"Loaded model from {model_pkl}")
-    return joblib.load(model_pkl)
+def load_model(model_filepath="model/*.joblib"):
+    "Loads latest model from default dir model/*.joblib"
+    file = get_latest_file(model_filepath)
+    logging.info(f"Loaded model from {file}")
+    return joblib.load(file)
