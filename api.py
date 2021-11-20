@@ -66,10 +66,10 @@ from fastapi import FastAPI
 from src.ml.model import load_model
 from src.ml.data import load_config
 
-
+# -------------------- GLOBAL VARIABLES --------------------
 app = FastAPI()
-model = load_model()
 config = load_config()
+model = load_model(model_filepath=config["api"]["model_filepath"])
 
 
 # Creating class to define the request body

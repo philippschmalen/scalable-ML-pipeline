@@ -40,3 +40,4 @@ git:
   remote: https://github.com/philippschmalen/scalable-ML-pipeline.git
 api:
   headers: {"Content-Type": "application/json"}
+  model_filepath: model/automl_pipeline_211120_095639_lgbm.joblib

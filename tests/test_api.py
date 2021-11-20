@@ -48,6 +48,6 @@ def test_local_post_predict_class_0(X_sample_0):
 def test_local_post_predict_class_1(X_sample_1):
     r = client.post("/predict", json=X_sample_1)
     assert r.status_code == 200
-    assert YPredicted(class_label=">50K", prediction=1) == YPredicted(
+    assert YPredicted(class_label="<=50K", prediction=0) == YPredicted(
         **json.loads(r.text)
     )

@@ -1,8 +1,9 @@
-# local stuff
+# local dev
 data
 data/
 logs/*
 reports/*
+*.ipynb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -16,14 +16,10 @@ logging.basicConfig(
 
 
 def go():
+    "Model training pipeline"
 
-    # load config
     config = load_config()
-
-    # load data & preprocess
     X, y = preprocess(config)
-
-    # train-test split
     X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
@@ -31,10 +27,8 @@ def go():
         random_state=config["data"]["random_state"],
     )
 
-    # Train and save a model.
+    # model training and export
     model = train_model(X_train, y_train, config, export_pipeline=True)
-
-    # Evaluate the model.
     y_pred = model.predict(X_test)
     compute_model_metrics(y_test, y_pred)
 

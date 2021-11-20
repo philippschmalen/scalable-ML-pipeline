@@ -128,7 +128,7 @@ def compute_model_metrics(y, preds, export_metrics=True):
 
 
 def load_model(model_filepath="model/*.joblib"):
-    "Loads latest model from default dir model/*.joblib"
+    "Loads latest model from model/*.joblib if not specified otherwise"
     file = get_latest_file(model_filepath)
     logging.info(f"Loaded model from {file}")
     return joblib.load(file)

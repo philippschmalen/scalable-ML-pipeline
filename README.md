@@ -41,6 +41,10 @@ If any problems occur for a specific package, run `conda update [package] -y` or
 
 ---
 
+
+
+
+
 ## API
 
 The script `api.py` builds an API. Serve it using
@@ -84,7 +88,6 @@ Load `data/census.csv` as a pandas dataframe where missings and duplicates are d
 
 See `src/ml/data.py` for details.
 
-
 ### Model training
 
 I use the Fast and Lightweight AutoML library to train and validate an estimator.
@@ -108,6 +111,7 @@ For details see [FLAML github](https://github.com/microsoft/FLAML).
 
 
 
+---
 
 ## Heroku
 
@@ -138,15 +142,41 @@ heroku run bash --app udacity-ml-devops
 
 
 
+## Testing
+
+
+Running `sanitycheck.py` succeeds:
+
+```bash
+(ml-deploy) ./Project deploy ML Heroku FastAPI>python sanitycheck.py
+This script will perform a sanity test to ensure your code meets the criteria in the rubric.
+
+Please enter the path to the file that contains your test cases for the GET() and POST() methods
+The path should be something like abc/def/test_xyz.py
+> tests/test_api.py
+
+============= Sanity Check Report ===========
+Your test cases look good!
+This is a heuristic based sanity testing and cannot guarantee the correctness of your code.
+You should still check your work against the rubric to ensure you meet the criteria.
+```
+
+
+
+
+
+
 
 
 
 
 ---
 
+# Udacity project instructions
+
 Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
 
-# Environment Set up
+## Environment Set up
 * Download and install conda if you don’t have it already.
     * Use the supplied requirements file to create a new environment, or
     * conda create -n [envname] "python=3.8" scikit-learn dvc pandas numpy pytest jupyter jupyterlab fastapi uvicorn -c conda-forge
