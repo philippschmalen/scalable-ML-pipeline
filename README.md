@@ -76,7 +76,7 @@ If you store and pull data from S3 within github actions, it needs credentials.
 
 ![](screenshots/iam_role_s3.png)
 
-2. GIthub: add secrets to github repo
+2. GIthub: vadd secrets to github repo
 
 ![](screenshots/repo_aws_secrets.png)
 
