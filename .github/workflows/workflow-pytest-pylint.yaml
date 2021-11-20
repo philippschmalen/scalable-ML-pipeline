@@ -27,16 +27,16 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-1
         # role-to-assume: arn:aws:iam::664003623405:role/udacity-dvc-s3
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Setup DVC
       uses: iterative/setup-dvc@v1
     - name: Pull from s3 with dvc
       run: |
         dvc pull
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
     - name: Run tests
       run: |
         python -m pytest
