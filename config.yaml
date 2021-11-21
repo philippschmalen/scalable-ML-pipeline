@@ -41,3 +41,6 @@ git:
 api:
   headers: {"Content-Type": "application/json"}
   model_filepath: model/automl_pipeline_211120_095639_lgbm.joblib
+  heroku_app_name: udacity-ml-devops
+  heroku_email: philippschmalen@gmail.com
+  url: https://udcaity-ml-devops.herokuapp.com

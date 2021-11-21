@@ -31,11 +31,14 @@ $ aws s3 ls --profile udacity
 
 Follow the steps in the [get started docs](https://dvc.org/doc/start).
 
-To complete the setup with AWS CLI, using a different profile than the `default`, modify the remote. I use the profile name `udacity` here:
+To complete the setup with AWS CLI, using a different profile than the `default`, modify the remote. I use the profile name `udacity` here.
+
+We need to tell dvc [where to look for credentials](https://dagshub.com/blog/configure-a-dvc-remote-without-a-devops-degree/#:~:text=Next%20we%20need%20to%20tell%20DVC%20how%20to%20ask%20for%20our%20credentials) using `dvc remote modify [remote name] --local [...]`
+
 
 ```bash
 # remote name: storage, AWS profile name: udacity
-dvc remote modify storage profile udacity
+dvc remote modify storage --local profile udacity
 
 dvc remote list
 >  storage s3://udacity-scalable-ml/dvcstore
@@ -49,12 +52,32 @@ dvc config -l
 The project's DVC config in `./dvc/config` now contains
 
 ```yaml
+# ./dvc/config
+[core]
+    remote = storage
+['remote "storage"']
+    url = s3://udacity-scalable-ml/dvcstore
+
+# ./dvc/config.local
+# needs profile = udacity as it is the local AWS profile in ./aws/credentials
 [core]
     remote = storage
 ['remote "storage"']
     url = s3://udacity-scalable-ml/dvcstore
     profile = udacity
 
+```
+
+`.aws/credentials` looks like this:
+
+```yaml
+[udacity]
+aws_access_key_id = asdf
+aws_secret_access_key = asdf
+
+[default]
+aws_access_key_id = asdf
+aws_secret_access_key = asdf
 ```
 
 ### Conda env
@@ -157,6 +180,21 @@ automl:
 For details see [FLAML github](https://github.com/microsoft/FLAML).
 
 
+### Continuous integration
+
+The workflow includes the following parts:
+
+* init python runtime
+* configure AWS credentials to enable dvc pulling from s3
+* configure dvc and `dvc pull` to download data
+* run pytest with `python -m pytest`
+
+
+![](screenshots/continuous_deloyment.png)
+
+
+
+
 
 ---
 
@@ -176,6 +214,8 @@ conda env export > requirements_conda.txt --no-builds
 # replace = with == and keep relevant packages > requirements.txt
 ```
 
+Build heroku app locally
+
 ```bash
 # app name: udacity-ml-devops
 heroku create udacity-ml-devops --buildpack heroku/python
@@ -187,9 +227,12 @@ heroku git:remote --app udacity-ml-devops
 heroku run bash --app udacity-ml-devops
 ```
 
+### Continuous deployment
+
+Using github actions [deploy-to-heroku](https://github.com/marketplace/actions/deploy-to-heroku#getting-started) to deploy the app.
 
 
-## Testing
+#### Sanity check
 
 
 Running `sanitycheck.py` succeeds:
