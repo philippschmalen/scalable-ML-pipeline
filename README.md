@@ -225,7 +225,14 @@ heroku apps
 heroku git:remote --app udacity-ml-devops
 # run bash
 heroku run bash --app udacity-ml-devops
+# install buildpacks to setup dvc
+heroku buildpacks:add --index 1 heroku-community/apt --app udacity-ml-devops
+
+
 ```
+
+To inspect errors: `heroku logs --tail --app udacity-ml-devops`
+
 
 ### Continuous deployment
 
