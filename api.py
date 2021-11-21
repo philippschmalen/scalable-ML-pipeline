@@ -69,6 +69,8 @@ import os
 
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
+    os.system("dvc remote list")
+    os.system("dvc config -l")
     os.system("dvc config core.no_scm true")
     if os.system("dvc pull -v") != 0:
         exit("dvc pull failed")
