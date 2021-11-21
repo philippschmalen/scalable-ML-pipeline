@@ -219,19 +219,28 @@ Build heroku app locally
 ```bash
 # app name: udacity-ml-devops
 heroku create udacity-ml-devops --buildpack heroku/python
+
 # list apps
 heroku apps
+
 # set remote
 heroku git:remote --app udacity-ml-devops
+
 # run bash
 heroku run bash --app udacity-ml-devops
+
 # install buildpacks to setup dvc
 heroku buildpacks:add --index 1 heroku-community/apt --app udacity-ml-devops
 
-
+# config aws access or set config vars on heroku app settings
+heroku config:set AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... AWS_REGION=...
 ```
 
-To inspect errors: `heroku logs --tail --app udacity-ml-devops`
+Finally, add the `Procfile` which defines a web service.
+
+### Troublehsooting
+
+To inspect logs: `heroku logs --app udacity-ml-devops`
 
 
 ### Continuous deployment
