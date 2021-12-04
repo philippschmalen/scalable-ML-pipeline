@@ -115,11 +115,11 @@ Add AWS secrets to repo
 
 ## API
 
-The script `api.py` builds an API. Serve it using
+The script `main.py` builds an API. Serve it using
 
 ```bash
 # note: use the reload flag only for development
-uvicorn api:app --reload
+uvicorn main:app --reload
 # creates api endpoint on localhost:
 # http://127.0.0.1:8000/
 ```
