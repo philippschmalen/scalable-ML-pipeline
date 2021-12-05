@@ -20,8 +20,8 @@ def test_api_locally_get_root():
 """
 
 from fastapi.testclient import TestClient
-from api import app
-from api import YPredicted
+from main import app
+from main import YPredicted
 import json
 
 # Instantiate the testing client with our app.
