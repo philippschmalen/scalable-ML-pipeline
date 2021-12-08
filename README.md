@@ -31,6 +31,15 @@ $ aws s3 ls --profile udacity
 
 Follow the steps in the [get started docs](https://dvc.org/doc/start).
 
+```bash
+dvc init
+git add *
+git commit -m "init dvc"
+git push
+dvc remote add -d s3 s3://udacity-scalable-ml
+```
+
+#### Different AWS profile than `default`
 To complete the setup with AWS CLI, using a different profile than the `default`, modify the remote. I use the profile name `udacity` here.
 
 We need to tell dvc [where to look for credentials](https://dagshub.com/blog/configure-a-dvc-remote-without-a-devops-degree/#:~:text=Next%20we%20need%20to%20tell%20DVC%20how%20to%20ask%20for%20our%20credentials) using `dvc remote modify [remote name] --local [...]`
