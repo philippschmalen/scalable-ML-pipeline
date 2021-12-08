@@ -4,16 +4,22 @@ Project as part of the **Machine Learning Devops Engineer** nanodegree at Udacit
 
 Link to repo: https://github.com/philippschmalen/scalable-ML-pipeline
 
+
+
+---
 ## TODO
 
-* add s3 as dvc remote
-* load data from s3
-* check rubric
+*
+---
 
 
 ## Getting started
 
 Find the starter code [here](https://github.com/udacity/nd0821-c3-starter-code).
+
+```bash
+git clone https://github.com/philippschmalen/scalable-ML-pipeline.git
+```
 
 ### AWS setup
 
