@@ -9,7 +9,9 @@ Link to repo: https://github.com/philippschmalen/scalable-ML-pipeline
 ---
 ## TODO
 
-*
+* run script for live-testing
+
+
 ---
 
 
