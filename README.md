@@ -9,7 +9,8 @@ Link to repo: https://github.com/philippschmalen/scalable-ML-pipeline
 ---
 ## TODO
 
-* run script for live-testing
+* use aequitas for data split
+
 
 
 ---
@@ -255,6 +256,10 @@ heroku config:set AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... AWS_REGION=...
 
 Finally, add the `Procfile` which defines a web service.
 
+```bash
+web: uvicorn main:app --host=0.0.0.0 --port=${PORT:-5000}
+```
+
 ### Troublehsooting
 
 To inspect logs: `heroku logs --app udacity-ml-devops`
@@ -264,8 +269,20 @@ To inspect logs: `heroku logs --app udacity-ml-devops`
 
 Using github actions [deploy-to-heroku](https://github.com/marketplace/actions/deploy-to-heroku#getting-started) to deploy the app.
 
+Activate continuous deployment on Heroku ![](screenshots/heroku_cd.png)
 
-#### Sanity check
+### Testing
+
+```bash
+# live API testing
+python live_request.py
+
+# run tests in root dir ./
+python -m pytest
+
+# other sanity checks
+python sanitycheck.py
+```
 
 
 Running `sanitycheck.py` succeeds:

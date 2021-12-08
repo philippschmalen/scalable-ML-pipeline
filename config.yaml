@@ -2,30 +2,32 @@ data:
   test_size: 0.2
   random_state: 42
   target: salary
-  target_labels: ['<=50K', '>50K']
-  cat_features: [
-    "workclass",
-    "education",
-    "marital-status",
-    "occupation",
-    "relationship",
-    "race",
-    "sex",
-    "native-country"
-  ]
-  num_features: [
-    'age',
-    'fnlgt',
-    'education-num',
-    'capital-gain',
-    'capital-loss',
-    'hours-per-week'
-  ]
+  target_labels: ["<=50K", ">50K"]
+  cat_features:
+    [
+      "workclass",
+      "education",
+      "marital-status",
+      "occupation",
+      "relationship",
+      "race",
+      "sex",
+      "native-country",
+    ]
+  num_features:
+    [
+      "age",
+      "fnlgt",
+      "education-num",
+      "capital-gain",
+      "capital-loss",
+      "hours-per-week",
+    ]
 automl:
   task: classification
   time_budget: 30
   random_state: 42
-  metric: 'roc_auc'
+  metric: "roc_auc"
   log_training_metric: True
   log_file_name: "logs/flaml.log"
   eval_method: holdout
@@ -39,8 +41,8 @@ s3:
 git:
   remote: https://github.com/philippschmalen/scalable-ML-pipeline.git
 api:
-  headers: {"Content-Type": "application/json"}
+  headers: { "Content-Type": "application/json" }
   model_filepath: model/automl_pipeline_211120_095639_lgbm.joblib
   heroku_app_name: udacity-ml-devops
   heroku_email: philippschmalen@gmail.com
-  url: https://udcaity-ml-devops.herokuapp.com
+  url: https://udacity-ml-devops.herokuapp.com
