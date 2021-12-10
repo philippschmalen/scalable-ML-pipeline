@@ -98,6 +98,15 @@ aws_access_key_id = asdf
 aws_secret_access_key = asdf
 ```
 
+#### List all tracked files
+
+```bash
+# lists all tracked files
+dvc list . --dvc-only
+```
+
+![](screenshots/dvcdag.png)
+
 ### Conda env
 
 ```bash

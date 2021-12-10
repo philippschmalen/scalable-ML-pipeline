@@ -1,0 +1,4 @@
+outs:
+- md5: 691dc379b54249e548371a10c8dcd542
+  size: 590574
+  path: automl_pipeline.joblib

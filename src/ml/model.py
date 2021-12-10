@@ -63,7 +63,6 @@ def create_automl_pipeline(config):
 
 def train_model(X_train, y_train, config, export_pipeline=True):
 
-    timestamp = datetime.utcnow().strftime("%y%m%d_%H%M%S")
     pipeline = create_automl_pipeline(config)
 
     settings_automl = {
@@ -82,8 +81,7 @@ def train_model(X_train, y_train, config, export_pipeline=True):
 
     if export_pipeline:
 
-        automl_best_estimator = pipeline.steps[-1][-1]
-        filepath = f"model/automl_pipeline_{timestamp}_{automl_best_estimator.best_estimator}.joblib"
+        filepath = "model/automl_pipeline.joblib"
         joblib.dump(pipeline, filepath)
         logging.info(f"Saving prediction pipeline to {filepath}.")
 
