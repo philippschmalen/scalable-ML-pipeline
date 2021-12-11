@@ -43,7 +43,7 @@ git:
   remote: https://github.com/philippschmalen/scalable-ML-pipeline.git
 api:
   headers: { "Content-Type": "application/json" }
-  model_filepath: model/automl_pipeline_211120_095639_lgbm.joblib
+  model_filepath: model/automl_pipeline.joblib
   heroku_app_name: udacity-ml-devops
   heroku_email: philippschmalen@gmail.com
   url: https://udacity-ml-devops.herokuapp.com
