@@ -1,6 +1,6 @@
 # local dev
 logs/*
-reports/*
+# reports/*
 *.ipynb
 
 # data

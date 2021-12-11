@@ -313,8 +313,16 @@ You should still check your work against the rubric to ensure you meet the crite
 
 
 
+## Bias and fairness auditing
+
+[Fairlearn](https://github.com/fairlearn/fairlearn) assesses a model's fairness. [Here](https://github.com/fairlearn/fairlearn/blob/main/notebooks/Binary%20Classification%20with%20the%20UCI%20Credit-card%20Default%20Dataset.ipynb) is an notebook example.
+
+**Metric**: ROC AUC
 
 
+**Sex**:
+Female    0.784644
+Male      0.797031
 
 
 

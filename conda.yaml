@@ -20,5 +20,6 @@ dependencies:
   - dvc
   - pre-commit
   - black
+  - fairlearn
   - pip:
-    - gunicorn
+      - gunicorn
