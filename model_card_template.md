@@ -56,6 +56,8 @@ Refer to other metrics in fairlearns [docs](https://fairlearn.org/v0.7.0/user_gu
 
 ### Fairness metrics
 
+Here is an overview of several fairness metrics:
+
 |                                | sex         | race        |
 |--------------------------------|-------------|-------------|
 | Overall selection rate         | 0.208666257 | 0.208666257 |
