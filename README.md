@@ -317,12 +317,8 @@ You should still check your work against the rubric to ensure you meet the crite
 
 [Fairlearn](https://github.com/fairlearn/fairlearn) assesses a model's fairness. [Here](https://github.com/fairlearn/fairlearn/blob/main/notebooks/Binary%20Classification%20with%20the%20UCI%20Credit-card%20Default%20Dataset.ipynb) is an notebook example.
 
-**Metric**: ROC AUC
+To get the fairness report `dvc pull` and inspect it in `reports/fairness_metrics.csv`.g
 
-
-**Sex**:
-Female    0.784644
-Male      0.797031
 
 
 
