@@ -7,14 +7,6 @@ Link to repo: https://github.com/philippschmalen/scalable-ML-pipeline
 
 
 ---
-## TODO
-
-* use aequitas for data split
-
-
-
----
-
 
 ## Getting started
 
