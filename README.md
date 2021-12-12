@@ -94,7 +94,7 @@ aws_secret_access_key = asdf
 
 ```bash
 # lists all tracked files
-dvc list . --dvc-only
+dvc list . --dvc-only -R
 ```
 
 ![](screenshots/dvcdag.png)
